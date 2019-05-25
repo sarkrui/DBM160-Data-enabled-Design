@@ -12,7 +12,7 @@ const char* OOCSIName = "";
 // put the adress of your OOCSI server here, can be URL or IP address string
 const char* hostserver = "oocsi.id.tue.nl";
 // OOCSI reference for the entire sketch
-const char* CHANNELName = "";
+const char* CHANNELName = "Group7_Informed_Prototype";
 OOCSI oocsi = OOCSI();
 
 //-----------------------------------
@@ -69,7 +69,7 @@ void setup()
   pinMode(motionPin, INPUT);              // declare sensor as input
   dht.begin();
   sgpSetup();
-
+  errorReport();
 }
 
 void WPAPersonalInit() {
@@ -185,6 +185,15 @@ void updateSensor() {
   oocsi.sendMessage();
   debugLed(2);
 }
+
+void errorReport() {
+
+  oocsi.newMessage("error_report");
+  oocsi.addString("device_id" , "ddcdb5aa4642b4616");
+  oocsi.addString("activity" , "System (re)booting");
+  oocsi.sendMessage();
+}
+
 void loop() {
 
   dataDebug();
