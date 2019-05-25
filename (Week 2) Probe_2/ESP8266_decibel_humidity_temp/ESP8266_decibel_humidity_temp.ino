@@ -64,11 +64,6 @@ void setup()
 void OOSCIInit() {
 
   delay(1000); //Take some time to open up the Serial Monitor
-  // use this to switch off logging to Serial
-  // oocsi.setLogging(false);
-
-  // connect wifi and OOCSI to the server
-
   oocsi.connect(OOCSIName, hostserver, ssid, password, processOOCSI);
 }
 
